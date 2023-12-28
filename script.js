@@ -15,32 +15,28 @@ myMap.set("Jane", "315-0322");
 myMap.set("Jeremiah", "606-3193");
 myMap.set("Toddler", "666-8008");
 
-// for (let [key, value] of myMap) {
-//   console.log(
-//     `${key} = ${value}`,
-//     "The key is: " + key + " and the value is: " + value
-//   );
-// }
+for (let [key, value] of myMap) {
+  console.log(
+    `${key} = ${value}`,
+    "The key is: " + key + " and the value is: " + value
+  );
+}
 
 // creating my own Hash Table
 
 class HashTable {
   constructor() {
-    this.table = new Array(255);
+    this.table = new Array(127);
     this.size = 0;
   }
   _hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
       hash += key.charCodeAt(i);
-      console.log(key.charCodeAt(i), "char");
     }
-    console.log(hash, "hash", this.table.length, "hash % this.table.length");
-    console.log(hash % this.table.length, "hash % this.table.length TOTAL");
     return hash % this.table.length;
   }
   set(key, value) {
-    console.log(key, "set key", value, "set value");
     const index = this._hash(key);
     this.table[index] = [key, value];
     this.size++;
@@ -62,11 +58,3 @@ class HashTable {
     }
   }
 }
-
-const jeremiahsHashBrowns = new HashTable();
-jeremiahsHashBrowns.set("Jeremiah", "Jeremiah is very cool");
-jeremiahsHashBrowns.set("whatIknow", "hashbashes are cool");
-jeremiahsHashBrowns.set("whatIknew", "Life is good");
-// console.log(jeremiahsHashBrowns.get("Jeremiah"));
-// console.log(jeremiahsHashBrowns.get("whatIknow"));
-// console.log(jeremiahsHashBrowns.get("whatIknew"), "whatiknew");
